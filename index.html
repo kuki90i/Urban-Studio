@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urban Studio | Наталья</title>
+
+    <!-- Описание для поисковиков -->
+    <meta name="description" content="Профессиональный массаж и СПА-программы в Санкт-Петербурге. Опыт более 20 лет. Кедровая бочка, антицеллюлитный и расслабляющий массаж.">
+
+    <!-- Open Graph (для красивых ссылок в Telegram, VK, WhatsApp) -->
+    <meta property="og:title" content="Urban Studio | Массаж и СПА от Urban Studio">
+    <meta property="og:description" content="Подарите своему телу здоровье и расслабление. Записывайтесь на сеанс!">
+    <meta property="og:image" content="https://ТВОЙ_ЛОГИН.github.io/ТВОЙ_РЕПОЗИТОРИЙ/img/Home.png">
+    <meta property="og:type" content="website">
+
+    <!-- Цвет шапки браузера на мобильных -->
+    <meta name="theme-color" content="#0a0a0a">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="img/Logo.svg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #141414;
+            --bg-card: #1a1a1a;
+            --bg-card-hover: #222222;
+            --accent: #c9a96e;
+            --accent-light: #d4b97a;
+            --accent-dark: #b8944d;
+            --text-primary: #f0ece4;
+            --text-secondary: #a09888;
+            --text-muted: #6b6358;
+            --border: #2a2520;
+            --border-light: #3a3530;
+            --shadow: rgba(0, 0, 0, 0.4);
+            --glass: rgba(26, 26, 26, 0.8);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .bg-glow {
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 30%, rgba(201, 169, 110, 0.03) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 70%, rgba(201, 169, 110, 0.02) 0%, transparent 50%);
+            animation: glowMove 20s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes glowMove {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-5%, -5%); }
+        }
+
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 0 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .nav-bar {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            padding: 8px 6px;
+            display: flex;
+            gap: 4px;
+            z-index: 1000;
+            box-shadow: 0 10px 40px var(--shadow);
+        }
+
+        .nav-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            padding: 10px 14px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+        }
+
+        .nav-btn:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-btn.active {
+            background: var(--accent);
+            color: var(--bg-primary);
+        }
+
+        .nav-btn i {
+            font-size: 16px;
+        }
+
+        .nav-btn span {
+            display: none;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .nav-btn.active span {
+            display: inline;
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            padding-bottom: 100px;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ========== РАЗДЕЛ 1: ОБО МНЕ ========== */
+        .hero-section {
+            padding-top: 40px;
+        }
+
+        .hero-photo-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 3/4;
+            border-radius: 24px;
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+
+        .hero-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-photo-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 40px 24px 24px;
+            background: linear-gradient(transparent, rgba(10, 10, 10, 0.95));
+        }
+
+        .hero-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .hero-title {
+            font-size: 14px;
+            color: var(--accent);
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .about-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+
+        .about-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .about-card h3 .dot {
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        .about-card p {
+            font-size: 14px;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .stat-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 20px 12px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--accent);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ========== РАЗДЕЛ 2: ПРОГРАММЫ ========== */
+        .programs-section {
+            padding-top: 40px;
+        }
+
+        .section-header {
+            margin-bottom: 24px;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .section-header p {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .program-category {
+            margin-bottom: 16px;
+        }
+
+        .category-toggle {
+            width: 100%;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 18px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--text-primary);
+        }
+
+        .category-toggle:hover {
+            border-color: var(--accent);
+            background: var(--bg-card-hover);
+        }
+
+        .category-toggle.open {
+            border-radius: 16px 16px 0 0;
+            border-bottom-color: transparent;
+            border-color: var(--accent);
+        }
+
+        .category-toggle-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .category-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--bg-primary);
+            font-size: 16px;
+        }
+
+        .category-name {
+            font-weight: 500;
+            font-size: 15px;
+        }
+
+        .category-count {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .category-arrow {
+            color: var(--text-muted);
+            transition: transform 0.3s ease;
+            font-size: 14px;
+        }
+
+        .category-toggle.open .category-arrow {
+            transform: rotate(180deg);
+            color: var(--accent);
+        }
+
+        .category-content {
+            display: none;
+            background: var(--bg-card);
+            border: 1px solid var(--accent);
+            border-top: none;
+            border-radius: 0 0 16px 16px;
+            padding: 4px 12px 12px;
+        }
+
+        .category-content.open {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        .program-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 12px;
+            border-radius: 12px;
+            transition: background 0.2s ease;
+        }
+
+        .program-item:hover {
+            background: var(--bg-card-hover);
+        }
+
+        .program-item + .program-item {
+            border-top: 1px solid var(--border);
+        }
+
+        .program-info h4 {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .program-duration {
+            font-size: 12px;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .program-duration i {
+            font-size: 10px;
+        }
+
+        .program-price {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--accent);
+            white-space: nowrap;
+        }
+
+        /* Кнопка записи в разделе услуг */
+        .book-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            color: var(--bg-primary);
+            border: none;
+            border-radius: 16px;
+            padding: 18px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            text-decoration: none;
+            margin-top: 24px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(201, 169, 110, 0.25);
+        }
+
+        .book-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(201, 169, 110, 0.4);
+        }
+
+        .book-btn:active {
+            transform: translateY(0);
+        }
+
+        .book-btn i {
+            font-size: 22px;
+        }
+
+        /* ========== РАЗДЕЛ 3 И 4: ССЫЛКИ И ОТЗЫВЫ ========== */
+        .links-section, .reviews-section {
+            padding-top: 40px;
+        }
+
+        .link-card {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 16px 20px;
+            margin-bottom: 10px;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .link-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(201, 169, 110, 0.1);
+        }
+
+        .link-card:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        .link-icon, .source-icon {
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+        
+        .link-icon {
+            width: 44px;
+            height: 44px;
+        }
+
+        .source-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+        }
+
+        .link-icon img, .source-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: inherit;
+        }
+
+        .link-icon.telegram, .source-icon.telegram { background: #1898d8; }
+        .link-icon.vk, .source-icon.vk { background: #2787f5; }
+        .link-icon.max-app, .source-icon.max-app { background: #3372c6; }
+        .link-icon.twogis, .source-icon.twogis { background: #19aa1e; }
+        .link-icon.prodoctorov, .source-icon.prodoctorov { 
+            background: #ffffff; 
+            border: 1px solid var(--border-light);
+        }
+
+        .link-text { flex: 1; }
+        .link-text h4 { font-size: 14px; font-weight: 500; margin-bottom: 2px; }
+        .link-text p { font-size: 12px; color: var(--text-muted); }
+        .link-arrow { color: var(--text-muted); font-size: 12px; transition: transform 0.3s ease; }
+        .link-card:hover .link-arrow { transform: translateX(4px); color: var(--accent); }
+
+        .review-source { margin-bottom: 20px; }
+
+        .source-header {
+            width: 100%;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--text-primary);
+        }
+
+        .source-header:hover { border-color: var(--accent); }
+        .source-header.open { border-radius: 16px 16px 0 0; border-bottom: none; border-color: var(--accent); }
+        .source-header-left { display: flex; align-items: center; gap: 12px; }
+        .source-name { font-weight: 500; font-size: 14px; }
+        .source-badge { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+        .source-arrow { color: var(--text-muted); font-size: 14px; transition: transform 0.3s ease; }
+        .source-header.open .source-arrow { transform: rotate(180deg); color: var(--accent); }
+
+        .source-content {
+            display: none;
+            background: var(--bg-card);
+            border: 1px solid var(--accent);
+            border-top: none;
+            border-radius: 0 0 16px 16px;
+            padding: 16px;
+        }
+
+        .source-content.open { display: block; animation: slideDown 0.3s ease; }
+
+        .review-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+
+        .review-photo {
+            width: 100%;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            display: block;
+        }
+
+        .review-photo:hover { transform: scale(1.03); }
+
+        /* Модальное окно для фото */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            cursor: pointer;
+        }
+
+        .modal-overlay.active { display: flex; animation: fadeIn 0.3s ease; }
+        .modal-img { max-width: 100%; max-height: 90vh; object-fit: contain; border-radius: 12px; }
+
+        .modal-close {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 18px;
+            z-index: 2001;
+        }
+
+        /* Плавающие кнопки */
+        .floating-actions {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 999;
+        }
+
+        .cta-floating, .share-floating {
+            width: 56px;
+            height: 56px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .cta-floating {
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            color: var(--bg-primary);
+            box-shadow: 0 4px 20px rgba(201, 169, 110, 0.3);
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .cta-floating i {
+            font-size: 28px;
+        }
+
+        .share-floating {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            color: var(--accent);
+            box-shadow: 0 4px 20px var(--shadow);
+        }
+
+        .share-floating i {
+            font-size: 22px;
+        }
+
+        .cta-floating:hover { transform: scale(1.1); box-shadow: 0 6px 30px rgba(201, 169, 110, 0.4); }
+        .cta-floating:active { transform: scale(0.95); }
+        .share-floating:hover { transform: scale(1.1); border-color: var(--accent); }
+        .share-floating:active { transform: scale(0.95); }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 4px 20px rgba(201, 169, 110, 0.3); }
+            50% { box-shadow: 0 4px 30px rgba(201, 169, 110, 0.5); }
+        }
+
+        ::-webkit-scrollbar { width: 0; }
+
+        @media (max-width: 380px) {
+            .nav-btn { padding: 8px 10px; }
+            .nav-btn i { font-size: 14px; }
+            .stat-item { padding: 14px 8px; }
+            .stat-number { font-size: 20px; }
+        }
+
+        /* Toast для уведомления о копировании ссылки */
+        .toast {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-100px);
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--accent);
+            border-radius: 12px;
+            padding: 12px 24px;
+            color: var(--text-primary);
+            font-size: 13px;
+            z-index: 3000;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .toast.show { transform: translateX(-50%) translateY(0); }
+        .toast i { color: var(--accent); }
+    </style>
+</head>
+<body>
+
+    <div class="bg-glow"></div>
+
+    <!-- Toast уведомление -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastText">Ссылка скопирована!</span>
+    </div>
+
+    <!-- Модальное окно -->
+    <div class="modal-overlay" id="modal" onclick="closeModal()">
+        <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+        <img class="modal-img" id="modalImg" src="" alt="Отзыв">
+    </div>
+
+    <!-- Плавающие кнопки -->
+    <div class="floating-actions">
+        <button class="share-floating" onclick="shareSite()" title="Поделиться">
+            <i class="fas fa-share-nodes"></i>
+        </button>
+        <a href="https://t.me/Natacha_Urban" target="_blank" class="cta-floating" title="Записаться">
+            <i class="fab fa-telegram-plane"></i>
+        </a>
+    </div>
+
+    <div class="container">
+
+        <!-- ==================== РАЗДЕЛ 1: ОБО МНЕ ==================== -->
+        <div class="section active" id="section-about">
+            <div class="hero-section">
+
+                <div class="hero-photo-wrapper">
+                    <img src="img/Home.png" alt="Наталья" class="hero-photo">
+                    <div class="hero-photo-overlay">
+                        <div class="hero-title">Массажист · СПА-специалист</div>
+                        <div class="hero-name">Наталья Urban</div>
+                    </div>
+                </div>
+
+                <div class="stats-row">
+                    <div class="stat-item">
+                        <span class="stat-number">23+</span>
+                        <div class="stat-label">Лет опыта</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">2к+</span>
+                        <div class="stat-label">Клиентов</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">5.0</span>
+                        <div class="stat-label">Рейтинг</div>
+                    </div>
+                </div>
+
+                <div class="about-card">
+                    <h3><span class="dot"></span>О себе</h3>
+                    <p>Привет! Я Наталья — медицинская сестра по массажу с опытом работы более 20 лет...</p>
+                    <br>
+                    <p>Как специалист по телу (эстетик) специализируюсь на: антицеллюлитном массаже...</p>
+                    <br>
+                    <p>Как СПА-технолог специализируюсь на: расслабляющем массаже, СПА-программах.</p>
+                    <br>
+                    <p>Постоянно обучаюсь и повышаю свои знания...</p>
+                    <br>
+                    <p style="color: var(--accent); font-style: italic;">
+                        Сочетаю целебную силу кедровой бочки, профессиональный массаж и спа-уход для вашей красоты и здоровья. Ваше тело скажет вам спасибо! ✨
+                    </p>
+                </div>
+
+                <div class="about-card">
+                    <h3><span class="dot"></span>Образование</h3>
+                    <p>🎓 Беловский медицинский колледж — фельдшер (2002 г.)</p><br>
+                    <p>🎓 Кемеровская государственная медицинская академия — провизор (2010 г.)</p><br>
+                    <p>🎓 Алтайский государственный медицинский университет — врач-провизор (2013 г.)</p><br>
+                    <p>📜 Медицинский колледж №2 — переподготовка по массажу (СПб, 2024 г.)</p><br>
+                    <p>📜 Школа мастеров массажа (СПб, 2024 г.)</p><br>
+                    <p style="color: var(--accent); font-style: italic; margin-top: 8px;">
+                        Окружу вас вниманием, теплом сибирского кедра и заботливыми руками...
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ==================== РАЗДЕЛ 2: ПРОГРАММЫ ==================== -->
+        <div class="section" id="section-programs">
+            <div class="programs-section">
+
+                <div class="section-header">
+                    <h2>Услуги и цены</h2>
+                    <p style="color: var(--accent); margin-bottom: 4px;">Подробнее можно посмотреть в Telegram</p>
+                    <p>Нажмите на категорию, чтобы раскрыть</p>
+                </div>
+
+                <div class="program-category">
+                    <div class="category-toggle" onclick="toggleCategory(this)">
+                        <div class="category-toggle-left">
+                            <div class="category-icon"><i class="fas fa-spa"></i></div>
+                            <div>
+                                <div class="category-name">СПА-программы</div>
+                                <div class="category-count">9 услуг</div>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-down category-arrow"></i>
+                    </div>
+                    <div class="category-content">
+                        <div class="program-item"><div class="program-info"><h4>«Алтайское здоровье»</h4><div class="program-duration"><i class="far fa-clock"></i> 2 часа 30 мин</div></div><div class="program-price">4 800 ₽</div></div>
+                        <div class="program-item"><div class="program-info"><h4>«Шоколадно-апельсиновое блаженство»</h4><div class="program-duration"><i class="far fa-clock"></i> 1 час 40 мин</div></div><div class="program-price">3 000 ₽</div></div>
+                        <div class="program-item"><div class="program-info"><h4>«Кедровое исцеление»</h4><div class="program-duration"><i class="far fa-clock"></i> 1 час 40 мин</div></div><div class="program-price">3 100 ₽</div></div>
+                        <div class="program-item"><div class="program-info"><h4>«Лёгкие ножки»</h4><div class="program-duration"><i class="far fa-clock"></i> 1 час</div></div><div class="program-price">2 000 ₽</div></div>
+                        <div class="program-item"><div class="program-info"><h4>«Шоколадный Хаммам»</h4><div class="program-duration"><i class="far fa-clock"></i> 3 часа</div></div><div class="program-price">5 000 ₽</div></div>
+                        <div class="program-item"><div class="program-info"><h4>«Магия новогодней ночи»</h4><div class="program-duration"><i class="far fa-clock"></i> 3 часа</div></div><div class="program-price">5 000 ₽</div></div>
+                        <div class="program-item"><div class="program-info"><h4>«Глубокая перезагрузка»</h4><div class="program-duration"><i class="far fa-clock"></i> 2 часа</div></div><div class="program-price">4 000 ₽</div></div>
+                        <div class="program-item"><div class="program-info"><h4>«Экспресс-скульптор»</h4><div class="program-duration"><i class="far fa-clock"></i> 3 часа</div></div><div class="program-price">5 000 ₽</div></div>
+                        <div class="program-item"><div class="program-info"><h4>«Стройный силуэт + лимфодренаж»</h4><div class="program-duration"><i class="far fa-clock"></i> 2 часа</div></div><div class="program-price">3 500 ₽</div></div>
+                    </div>
+                </div>
+
+                <!-- Кнопка записи на сеанс -->
+                <a href="https://t.me/Natacha_Urban" target="_blank" class="book-btn">
+                    <i class="fab fa-telegram-plane"></i>
+                    <span>Записаться на сеанс</span>
+                </a>
+
+            </div>
+        </div>
+
+        <!-- ==================== РАЗДЕЛ 3: ССЫЛКИ ==================== -->
+        <div class="section" id="section-links">
+            <div class="links-section">
+
+                <div class="section-header">
+                    <h2>Мои соцсети</h2>
+                    <p>Подписывайтесь, чтобы не пропустить новые программы</p>
+                </div>
+
+                <!-- Telegram -->
+                <a href="https://t.me/+P62cv61wA5xkZTIy" target="_blank" class="link-card">
+                    <div class="link-icon telegram">
+                        <img src="img/logo/telegram-logo.svg" alt="Telegram">
+                    </div>
+                    <div class="link-text">
+                        <h4>Telegram</h4>
+                        <p>Вся информация и запись</p>
+                    </div>
+                    <i class="fas fa-arrow-right link-arrow"></i>
+                </a>
+
+                <!-- VK личный -->
+                <a href="https://vk.ru/natalia_urban" target="_blank" class="link-card">
+                    <div class="link-icon vk">
+                        <img src="img/logo/vk-logo.svg" alt="VK">
+                    </div>
+                    <div class="link-text">
+                        <h4>VK — Личный профиль</h4>
+                        <p>Моя страница ВКонтакте</p>
+                    </div>
+                    <i class="fas fa-arrow-right link-arrow"></i>
+                </a>
+
+                <!-- VK сообщество -->
+                <a href="https://vk.ru/urban_massage" target="_blank" class="link-card">
+                    <div class="link-icon vk">
+                        <img src="img/logo/vk-logo.svg" alt="VK">
+                    </div>
+                    <div class="link-text">
+                        <h4>VK — Сообщество</h4>
+                        <p>Группа с основной информацией</p>
+                    </div>
+                    <i class="fas fa-arrow-right link-arrow"></i>
+                </a>
+
+                <!-- Max -->
+                <a href="https://max.ru/join/pGeSYjJenTlEjtmyfzD_dOYRVLcz7ovq7nCW2wpwhA4" target="_blank" class="link-card">
+                    <div class="link-icon max-app">
+                        <img src="img/logo/MAX-logo.svg" alt="Max">
+                    </div>
+                    <div class="link-text">
+                        <h4>Max</h4>
+                        <p>Канал с актуальной информацией</p>
+                    </div>
+                    <i class="fas fa-arrow-right link-arrow"></i>
+                </a>
+
+                <!-- 2ГИС -->
+                <a href="https://go.2gis.com/SPlso" target="_blank" class="link-card">
+                    <div class="link-icon twogis">
+                        <img src="img/logo/2gis-logo.svg" alt="2ГИС">
+                    </div>
+                    <div class="link-text">
+                        <h4>2ГИС</h4>
+                        <p>Urban Studio на карте</p>
+                    </div>
+                    <i class="fas fa-arrow-right link-arrow"></i>
+                </a>
+
+                <!-- ПроДокторов -->
+                <a href="https://prodoctorov.ru/spb/vrach/1289455-urban/" target="_blank" class="link-card">
+                    <div class="link-icon prodoctorov">
+                        <img src="img/logo/ProDok-logo.svg" alt="ПроДокторов">
+                    </div>
+                    <div class="link-text">
+                        <h4>ПроДокторов</h4>
+                        <p>Мой профиль и отзывы</p>
+                    </div>
+                    <i class="fas fa-arrow-right link-arrow"></i>
+                </a>
+
+            </div>
+        </div>
+
+        <!-- ==================== РАЗДЕЛ 4: ОТЗЫВЫ ==================== -->
+        <div class="section" id="section-reviews">
+            <div class="reviews-section">
+
+                <div class="section-header">
+                    <h2>Отзывы</h2>
+                    <p>Нажмите, чтобы раскрыть и посмотреть</p>
+                </div>
+
+                <!-- ВКонтакте -->
+                <div class="review-source">
+                    <div class="source-header" onclick="toggleSource(this)">
+                        <div class="source-header-left">
+                            <div class="source-icon vk">
+                                <img src="img/logo/vk-logo.svg" alt="VK">
+                            </div>
+                            <div>
+                                <div class="source-name">ВКонтакте</div>
+                                <div class="source-badge">2 отзыва</div>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-down source-arrow"></i>
+                    </div>
+                    <div class="source-content">
+                        <div class="review-gallery">
+                            <img src="img/Reviews/Vk-1.png" alt="Отзыв ВК 1" class="review-photo" onclick="openModal(this)">
+                            <img src="img/Reviews/Vk-2.png" alt="Отзыв ВК 2" class="review-photo" onclick="openModal(this)">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2ГИС -->
+                <div class="review-source">
+                    <div class="source-header" onclick="toggleSource(this)">
+                        <div class="source-header-left">
+                            <div class="source-icon twogis">
+                                <img src="img/logo/2gis-logo.svg" alt="2ГИС">
+                            </div>
+                            <div>
+                                <div class="source-name">2ГИС</div>
+                                <div class="source-badge">3 отзыва</div>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-down source-arrow"></i>
+                    </div>
+                    <div class="source-content">
+                        <div class="review-gallery">
+                            <img src="img/Reviews/2Giz-1.png" alt="Отзыв 2ГИС 1" class="review-photo" onclick="openModal(this)">
+                            <img src="img/Reviews/2Giz-2.png" alt="Отзыв 2ГИС 2" class="review-photo" onclick="openModal(this)">
+                            <img src="img/Reviews/2Giz-3.png" alt="Отзыв 2ГИС 3" class="review-photo" onclick="openModal(this)">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ПроДокторов -->
+                <div class="review-source">
+                    <div class="source-header" onclick="toggleSource(this)">
+                        <div class="source-header-left">
+                            <div class="source-icon prodoctorov">
+                                <img src="img/logo/ProDok-logo.svg" alt="ПроДокторов">
+                            </div>
+                            <div>
+                                <div class="source-name">ПроДокторов</div>
+                                <div class="source-badge">5 отзывов</div>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-down source-arrow"></i>
+                    </div>
+                    <div class="source-content">
+                        <div class="review-gallery">
+                            <img src="img/Reviews/Pro-Dok-1.png" alt="Отзыв ПроДокторов 1" class="review-photo" onclick="openModal(this)">
+                            <img src="img/Reviews/Pro-Dok-2.png" alt="Отзыв ПроДокторов 2" class="review-photo" onclick="openModal(this)">
+                            <img src="img/Reviews/Pro-Dok-3.png" alt="Отзыв ПроДокторов 3" class="review-photo" onclick="openModal(this)">
+                            <img src="img/Reviews/Pro-Dok-4.png" alt="Отзыв ПроДокторов 4" class="review-photo" onclick="openModal(this)">
+                            <img src="img/Reviews/Pro-Dok-5.png" alt="Отзыв ПроДокторов 5" class="review-photo" onclick="openModal(this)">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Навигация -->
+    <nav class="nav-bar">
+        <button class="nav-btn active" onclick="switchSection('about', this)">
+            <i class="fas fa-user"></i>
+            <span>Обо мне</span>
+        </button>
+        <button class="nav-btn" onclick="switchSection('programs', this)">
+            <i class="fas fa-list"></i>
+            <span>Услуги</span>
+        </button>
+        <button class="nav-btn" onclick="switchSection('links', this)">
+            <i class="fas fa-link"></i>
+            <span>Ссылки</span>
+        </button>
+        <button class="nav-btn" onclick="switchSection('reviews', this)">
+            <i class="fas fa-star"></i>
+            <span>Отзывы</span>
+        </button>
+    </nav>
+
+    <script>
+        function switchSection(sectionId, btn) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.getElementById('section-' + sectionId).classList.add('active');
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (navigator.vibrate) navigator.vibrate(10);
+        }
+
+        function toggleCategory(toggle) {
+            const content = toggle.nextElementSibling;
+            const isOpen = toggle.classList.contains('open');
+            document.querySelectorAll('.category-toggle.open').forEach(t => {
+                if (t !== toggle) {
+                    t.classList.remove('open');
+                    t.nextElementSibling.classList.remove('open');
+                }
+            });
+            toggle.classList.toggle('open', !isOpen);
+            content.classList.toggle('open', !isOpen);
+        }
+
+        function toggleSource(header) {
+            const content = header.nextElementSibling;
+            const isOpen = header.classList.contains('open');
+            document.querySelectorAll('.source-header.open').forEach(h => {
+                if (h !== header) {
+                    h.classList.remove('open');
+                    h.nextElementSibling.classList.remove('open');
+                }
+            });
+            header.classList.toggle('open', !isOpen);
+            content.classList.toggle('open', !isOpen);
+        }
+
+        function openModal(element) {
+            const src = element.src || element.querySelector('img')?.src;
+            if (src) {
+                document.getElementById('modalImg').src = src;
+                document.getElementById('modal').classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // Функция "Поделиться"
+        function shareSite() {
+            const shareData = {
+                title: 'Urban Studio | Наталья',
+                text: 'Профессиональный массаж и СПА-программы в Санкт-Петербурге',
+                url: window.location.href
+            };
+
+            if (navigator.share) {
+                navigator.share(shareData).catch(() => {});
+            } else {
+                navigator.clipboard.writeText(window.location.href).then(() => {
+                    showToast('Ссылка скопирована!');
+                }).catch(() => {
+                    showToast('Не удалось скопировать');
+                });
+            }
+            if (navigator.vibrate) navigator.vibrate(10);
+        }
+
+        function showToast(text) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastText').textContent = text;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2500);
+        }
+
+        // Свайпы между разделами
+        let touchStartX = 0;
+        const sections = ['about', 'programs', 'links', 'reviews'];
+
+        document.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        document.addEventListener('touchend', e => {
+            const diff = touchStartX - e.changedTouches[0].screenX;
+            if (Math.abs(diff) < 80) return;
+            const currentIndex = sections.indexOf(
+                document.querySelector('.section.active').id.replace('section-', '')
+            );
+            let newIndex;
+            if (diff > 0 && currentIndex < sections.length - 1) newIndex = currentIndex + 1;
+            else if (diff < 0 && currentIndex > 0) newIndex = currentIndex - 1;
+            else return;
+            const btns = document.querySelectorAll('.nav-btn');
+            switchSection(sections[newIndex], btns[newIndex]);
+        }, { passive: true });
+    </script>
+
+</body>
+</html>
