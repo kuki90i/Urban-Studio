@@ -46,6 +46,8 @@
 
         html {
             scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;       
         }
 
         body {
@@ -696,6 +698,31 @@
 
         .toast.show { transform: translateX(-50%) translateY(0); }
         .toast i { color: var(--accent); }
+
+        /* Заголовок подкатегории с точкой внутри блока */
+        .sub-category-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--accent);
+            margin: 16px 12px 6px 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .sub-category-title .sub-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .category-content .sub-category-title:first-child {
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -755,29 +782,113 @@
 
                 <div class="about-card">
                     <h3><span class="dot"></span>О себе</h3>
-                    <p>Привет! Я Наталья — медицинская сестра по массажу с опытом работы более 20 лет...</p>
-                    <br>
-                    <p>Как специалист по телу (эстетик) специализируюсь на: антицеллюлитном массаже...</p>
-                    <br>
-                    <p>Как СПА-технолог специализируюсь на: расслабляющем массаже, СПА-программах.</p>
-                    <br>
-                    <p>Постоянно обучаюсь и повышаю свои знания...</p>
-                    <br>
-                    <p style="color: var(--accent); font-style: italic;">
-                        Сочетаю целебную силу кедровой бочки, профессиональный массаж и спа-уход для вашей красоты и здоровья. Ваше тело скажет вам спасибо! ✨
+                    
+                    <p style="font-size: 15px; color: var(--text-primary); margin-bottom: 16px; line-height: 1.6;">
+                        Привет! Я Наталья — квалифицированный аккредитованный специалист - медицинская сестра по массажу, с опытом работы более 20 лет.
                     </p>
+
+                    <!-- Спецификации -->
+                    <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px;">
+                        
+                        <div style="background: var(--bg-secondary); border-left: 3px solid var(--accent); padding: 12px 14px; border-radius: 0 12px 12px 0;">
+                            <strong style="color: var(--accent); display: block; margin-bottom: 4px; font-size: 13px;">
+                                👩‍⚕️ Как медицинский работник, специализируюсь на:
+                            </strong>
+                            <span style="font-size: 13px; color: var(--text-secondary); line-height: 1.5;">
+                                реабилитации после травм, операций, инсультов, патологии опорно-двигательного аппарата (остеохондроз, сколиоз, грыжи), защемлении нервов, борьбе с радикулитом, головными болями напряжения и хроническими болевыми синдромами.
+                            </span>
+                        </div>
+
+                        <div style="background: var(--bg-secondary); border-left: 3px solid var(--accent); padding: 12px 14px; border-radius: 0 12px 12px 0;">
+                            <strong style="color: var(--accent); display: block; margin-bottom: 4px; font-size: 13px;">
+                                ✨ Как специалист по телу ( эстетик ) специализируюсь на:
+                            </strong>
+                            <span style="font-size: 13px; color: var(--text-secondary); line-height: 1.5;">
+                                антицеллюлитном массаже, лимфодренажом массаже, коррекции фигуры, массаже лица.
+                            </span>
+                        </div>
+
+                        <div style="background: var(--bg-secondary); border-left: 3px solid var(--accent); padding: 12px 14px; border-radius: 0 12px 12px 0;">
+                            <strong style="color: var(--accent); display: block; margin-bottom: 4px; font-size: 13px;">
+                                🌿 Как СПА технолог специализируюсь на:
+                            </strong>
+                            <span style="font-size: 13px; color: var(--text-secondary); line-height: 1.5;">
+                                расслабляющем массаже, СПА- программах.
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px;">
+                        Постоянно обучаюсь и повышаю свои знания.
+                    </p>
+
+                    <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">
+                        Использую только премиальную натуральную косметику и одноразовые расходные материалы. Для меня важно, чтобы каждый клиент уходил не только со здоровым расслабленным телом, а с улыбкой и хорошим настроением.
+                    </p>
+
+                    <!-- Финальный цитатник -->
+                    <div style="border-top: 1px solid var(--border); padding-top: 14px; margin-top: 10px;">
+                        <p style="color: var(--accent); font-style: italic; font-size: 13px; line-height: 1.6;">
+                            Сочетаю целебную силу кедровой бочки, профессиональный массаж и спа-уход для вашей красоты и здоровья.
+                        </p>
+                        <p style="color: var(--accent); font-weight: 600; font-size: 14px; margin-top: 6px;">
+                            Ваше тело скажет вам спасибо! ✨
+                        </p>
+                    </div>
                 </div>
 
                 <div class="about-card">
                     <h3><span class="dot"></span>Образование</h3>
-                    <p>🎓 Беловский медицинский колледж — фельдшер (2002 г.)</p><br>
-                    <p>🎓 Кемеровская государственная медицинская академия — провизор (2010 г.)</p><br>
-                    <p>🎓 Алтайский государственный медицинский университет — врач-провизор (2013 г.)</p><br>
-                    <p>📜 Медицинский колледж №2 — переподготовка по массажу (СПб, 2024 г.)</p><br>
-                    <p>📜 Школа мастеров массажа (СПб, 2024 г.)</p><br>
-                    <p style="color: var(--accent); font-style: italic; margin-top: 8px;">
-                        Окружу вас вниманием, теплом сибирского кедра и заботливыми руками...
+
+                    <div style="font-weight: 600; color: var(--text-primary); font-size: 14px; margin-bottom: 12px;">
+                        Уровень образования:
+                    </div>
+
+                    <!-- Список образования -->
+                    <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px;">
+                        
+                        <div style="display: flex; gap: 10px; font-size: 13px; color: var(--text-secondary); line-height: 1.5;">
+                            <span style="color: var(--accent);">🎓</span>
+                            <span>Беловский медицинский колледж. Среднее специальное, лечебное дело -фельдшер, подготовительные курсы по медицинскому массажу ( Белово 2002 г);</span>
+                        </div>
+
+                        <div style="display: flex; gap: 10px; font-size: 13px; color: var(--text-secondary); line-height: 1.5;">
+                            <span style="color: var(--accent);">🎓</span>
+                            <span>Кемеровская Государственная Медицинская Академия. Высшее, фармацевтический факультет - провизор ( Кемерово 2010 г);</span>
+                        </div>
+
+                        <div style="display: flex; gap: 10px; font-size: 13px; color: var(--text-secondary); line-height: 1.5;">
+                            <span style="color: var(--accent);">🎓</span>
+                            <span>Алтайский государственный медицинский университет - ординатура - врач-провизор ( Барнаул 2013 г);</span>
+                        </div>
+
+                        <div style="display: flex; gap: 10px; font-size: 13px; color: var(--text-secondary); line-height: 1.5;">
+                            <span style="color: var(--accent);">📜</span>
+                            <span>Медицинский колледж 2. Переподготовка по медицинскому массажу с первичной специализированной аккредитацией ( СПб, 2024 г).</span>
+                        </div>
+
+                        <div style="display: flex; gap: 10px; font-size: 13px; color: var(--text-secondary); line-height: 1.5;">
+                            <span style="color: var(--accent);">📜</span>
+                            <span>Курсы Школы мастеров массажа . Коррекция фигуры, 3D моделирование лица ( СПб, 2024 г ).</span>
+                        </div>
+
+                    </div>
+
+                    <!-- Подход к работе -->
+                    <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px; background: var(--bg-secondary); padding: 12px; border-radius: 12px; border: 1px solid var(--border);">
+                        В работе применяю индивидуальный подход с учётом особенностей организма, общего состояния клиента и его целей. Ориентируюсь на результат.
                     </p>
+
+                    <!-- Итоговое обращение -->
+                    <div style="color: var(--accent); font-size: 13px; line-height: 1.6; display: flex; flex-direction: column; gap: 6px;">
+                        <p>Окружу вас вниманием, теплом сибирского кедра и заботливыми руками.</p>
+                        <p>Помогу телу отдохнуть, а мыслям — перезагрузиться.</p>
+                        <p>Подарю вам комфорт и искреннюю заботу!</p>
+                        <p style="font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; color: var(--text-primary);">
+                            Запишитесь на удобное время!
+                        </p>
+                    </div>
                 </div>
 
             </div>
@@ -814,6 +925,271 @@
                         <div class="program-item"><div class="program-info"><h4>«Глубокая перезагрузка»</h4><div class="program-duration"><i class="far fa-clock"></i> 2 часа</div></div><div class="program-price">4 000 ₽</div></div>
                         <div class="program-item"><div class="program-info"><h4>«Экспресс-скульптор»</h4><div class="program-duration"><i class="far fa-clock"></i> 3 часа</div></div><div class="program-price">5 000 ₽</div></div>
                         <div class="program-item"><div class="program-info"><h4>«Стройный силуэт + лимфодренаж»</h4><div class="program-duration"><i class="far fa-clock"></i> 2 часа</div></div><div class="program-price">3 500 ₽</div></div>
+                    </div>
+                </div>
+
+                <div class="program-category">
+                    <div class="category-toggle" onclick="toggleCategory(this)">
+                        <div class="category-toggle-left">
+                            <div class="category-icon"><i class="fas fa-hands"></i></div>
+                            <div>
+                                <div class="category-name">Традиционный/Классический массаж (общий):</div>
+                                <div class="category-count">5 услуг</div>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-down category-arrow"></i>
+                    </div>
+                    <div class="category-content">
+                        <div class="program-item">
+                            <div class="program-info">
+                                <h4>Классика: Экспресс</h4>
+                                <div class="program-duration"><i class="far fa-clock"></i> 30 мин</div>
+                            </div>
+                            <div class="program-price">1 400 ₽</div>
+                        </div>
+                        <div class="program-item">
+                            <div class="program-info">
+                                <h4>Классика: Лайт</h4>
+                                <div class="program-duration"><i class="far fa-clock"></i> 45 мин</div>
+                            </div>
+                            <div class="program-price">2 000 ₽</div>
+                        </div>
+                        <div class="program-item">
+                            <div class="program-info">
+                                <h4>Классика: Стандарт</h4>
+                                <div class="program-duration"><i class="far fa-clock"></i> 60 мин</div>
+                            </div>
+                            <div class="program-price">2 500 ₽</div>
+                        </div>
+                        <div class="program-item">
+                            <div class="program-info">
+                                <h4>Классика: Комфорт</h4>
+                                <div class="program-duration"><i class="far fa-clock"></i> 75 мин</div>
+                            </div>
+                            <div class="program-price">3 100 ₽</div>
+                        </div>
+                        <div class="program-item">
+                            <div class="program-info">
+                                <h4>Классика: Максимум</h4>
+                                <div class="program-duration"><i class="far fa-clock"></i> 90 мин</div>
+                            </div>
+                            <div class="program-price">3 750 ₽</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ГЛАВНЫЙ БЛОК РАСКРЫТИЯ -->
+                <div class="program-category">
+                    <div class="category-toggle" onclick="toggleCategory(this)">
+                        <div class="category-toggle-left">
+                            <div class="category-icon"><i class="fas fa-hand"></i></div>
+                            <div>
+                                <div class="category-name">Классический массаж (по зонам):</div>
+                                <div class="category-count">6 услуг</div>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-down category-arrow"></i>
+                    </div>
+
+                    <!-- КОНТЕНТ (РАСКРЫВАЕТСЯ) -->
+                    <div class="category-content">
+
+                        <!-- 🟣 НАЗВАНИЕ ПОДКТЕГОРИИ 1 С ТОЧКОЙ -->
+                        <div class="sub-category-title">
+                            <span class="sub-dot"></span> Массаж спины + ШВЗ
+                        </div>
+                        <div class="program-item">
+                            <div class="program-info">
+                                <h4>Спина: Экспресс</h4>
+                                <div class="program-duration"><i class="far fa-clock"></i> 30 мин</div>
+                            </div>
+                            <div class="program-price">1 400 ₽</div>
+                        </div>
+                        <div class="program-item">
+                            <div class="program-info">
+                                <h4>Спина: Стандарт</h4>
+                                <div class="program-duration"><i class="far fa-clock"></i> 45 мин</div>
+                            </div>
+                            <div class="program-price">2 000 ₽</div>
+                        </div>
+                        <div class="program-item">
+                            <div class="program-info">
+                                <h4>Спина: Максимум</h4>
+                                <div class="program-duration"><i class="far fa-clock"></i> 60 мин</div>
+                            </div>
+                            <div class="program-price">2 500 ₽</div>
+                        </div>
+
+                        <!-- 🟣 НАЗВАНИЕ ПОДКТЕГОРИИ 2 С ТОЧКОЙ -->
+                        <div class="sub-category-title">
+                            <span class="sub-dot"></span> Массаж ног
+                        </div>
+                        <div class="program-item">
+                            <div class="program-info">
+                                <h4>Легкие ножки: Экспресс</h4>
+                                <div class="program-duration"><i class="far fa-clock"></i> 30 мин</div>
+                            </div>
+                            <div class="program-price">1 400 ₽</div>
+                        </div>
+                        <div class="program-item">
+                            <div class="program-info">
+                                <h4>Легкие ножки: Интенсив <br>(Полное расслабление мышц)</h4>
+                                <div class="program-duration"><i class="far fa-clock"></i> 60 мин</div>
+                            </div>
+                            <div class="program-price">2 500 ₽</div>
+                        </div>
+
+                        <!-- 🟣 НАЗВАНИЕ ПОДКТЕГОРИИ 3 С ТОЧКОЙ -->
+                        <div class="sub-category-title">
+                            <span class="sub-dot"></span> ШВЗ (Шейно-воротниковая зона)
+                        </div>
+                        <div class="program-item">
+                            <div class="program-info">
+                                <h4>Свобода шеи</h4>
+                                <div class="program-duration"><i class="far fa-clock"></i> 30 мин</div>
+                            </div>
+                            <div class="program-price">1 300 ₽</div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- КОНЕЦ БЛОКА -->
+
+                <div class="program-category">
+                    <div class="category-toggle" onclick="toggleCategory(this)">
+                        <div class="category-toggle-left">
+                            <div class="category-icon"><i class="fas fa-hand-holding-heart"></i></div>
+                            <div>
+                                <div class="category-name">Расслабляющий (Relax) массаж:</div>
+                                <div class="category-count">2 услуги</div>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-down category-arrow"></i>
+                    </div>
+                    <div class="category-content">
+                        <div class="program-item">
+                            <div class="program-info">
+                                <h4>Релакс: Стандарт</h4>
+                                <div class="program-duration"><i class="far fa-clock"></i> 60 мин</div>
+                            </div>
+                            <div class="program-price">2 000 ₽</div>
+                        </div>
+                        <div class="program-item">
+                            <div class="program-info">
+                                <h4>Релакс: Премиум</h4>
+                                <div class="program-duration"><i class="far fa-clock"></i> 90 мин</div>
+                            </div>
+                            <div class="program-price">3 000 ₽</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="program-category">
+                    <div class="category-toggle" onclick="toggleCategory(this)">
+                        <div class="category-toggle-left">
+                            <div class="category-icon"><i class="fas fa-water"></i></div>
+                            <div>
+                                <div class="category-name">Лимфодренажный массаж:</div>
+                                <div class="category-count">2 услуги</div>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-down category-arrow"></i>
+                    </div>
+                    <div class="category-content">
+                        <div class="program-item">
+                            <div class="program-info">
+                                <h4>Детокс: Лайт</h4>
+                                <div class="program-duration"><i class="far fa-clock"></i> 60 мин</div>
+                            </div>
+                            <div class="program-price">2 300 ₽</div>
+                        </div>
+                        <div class="program-item">
+                            <div class="program-info">
+                                <h4>Детокс: Интенсив</h4>
+                                <div class="program-duration"><i class="far fa-clock"></i> 90 мин</div>
+                            </div>
+                            <div class="program-price">3 450 ₽</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="program-category">
+                    <div class="category-toggle" onclick="toggleCategory(this)">
+                        <div class="category-toggle-left">
+                            <div class="category-icon"><i class="fas fa-fire"></i></div>
+                            <div>
+                                <div class="category-name">Антицеллюлитный массаж:</div>
+                                <div class="category-count">2 услуги</div>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-down category-arrow"></i>
+                    </div>
+                    <div class="category-content">
+                        <div class="program-item">
+                            <div class="program-info">
+                                <h4>Скульптор: Стандарт</h4>
+                                <div class="program-duration"><i class="far fa-clock"></i> 60 мин</div>
+                            </div>
+                            <div class="program-price">3 000 ₽</div>
+                        </div>
+                        <div class="program-item">
+                            <div class="program-info">
+                                <h4>Скульптор: Максимум</h4>
+                                <div class="program-duration"><i class="far fa-clock"></i> 90 мин</div>
+                            </div>
+                            <div class="program-price">4 500 ₽</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="program-category">
+                    <div class="category-toggle" onclick="toggleCategory(this)">
+                        <div class="category-toggle-left">
+                            <div class="category-icon"><i class="fas fa-wand-magic-sparkles"></i></div>
+                            <div>
+                                <div class="category-name">Лимфодренажный массаж лица:</div>
+                                <div class="category-count">2 услуги</div>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-down category-arrow"></i>
+                    </div>
+                    <div class="category-content">
+                        <div class="program-item">
+                            <div class="program-info">
+                                <h4>Лицо: Экспресс</h4>
+                                <div class="program-duration"><i class="far fa-clock"></i> 30 мин</div>
+                            </div>
+                            <div class="program-price">1 400 ₽</div>
+                        </div>
+                        <div class="program-item">
+                            <div class="program-info">
+                                <h4>Лицо: Сияние</h4>
+                                <div class="program-duration"><i class="far fa-clock"></i> 60 мин</div>
+                            </div>
+                            <div class="program-price">2 500 ₽</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="program-category">
+                    <div class="category-toggle" onclick="toggleCategory(this)">
+                        <div class="category-toggle-left">
+                            <div class="category-icon"><i class="fas fa-crown"></i></div>
+                            <div>
+                                <div class="category-name">Комплексный массаж ( Лицо + тело ):</div>
+                                <div class="category-count">1 услуга</div>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-down category-arrow"></i>
+                    </div>
+                    <div class="category-content">
+                        <div class="program-item">
+                            <div class="program-info">
+                                <h4>Комбо: Всё включено</h4>
+                                <div class="program-duration"><i class="far fa-clock"></i> 90 мин</div>
+                            </div>
+                            <div class="program-price">3 750 ₽</div>
+                        </div>
                     </div>
                 </div>
 
@@ -907,6 +1283,18 @@
                     <i class="fas fa-arrow-right link-arrow"></i>
                 </a>
 
+                <!-- Карточка разработчика -->
+                <a href="https://t.me/Kuki_Kukk" target="_blank" class="link-card" style="opacity: 0.7; margin-top: 24px; border-style: dashed;">
+                    <div class="link-icon" style="background: var(--bg-secondary); border: 1px solid var(--border);">
+                        <i class="fas fa-code" style="color: var(--accent); font-size: 18px;"></i>
+                    </div>
+                    <div class="link-text">
+                        <h4>Хотите такой же сайт?</h4>
+                        <p>Разработчик веб-сайтов и визиток</p>
+                    </div>
+                    <i class="fas fa-arrow-right link-arrow"></i>
+                </a>
+
             </div>
         </div>
 
@@ -935,8 +1323,8 @@
                     </div>
                     <div class="source-content">
                         <div class="review-gallery">
-                            <img src="img/reviews/Vk-1.png" alt="Отзыв ВК 1" class="review-photo" onclick="openModal(this)">
-                            <img src="img/reviews/Vk-2.png" alt="Отзыв ВК 2" class="review-photo" onclick="openModal(this)">
+                            <img src="img/Reviews/Vk-1.png" alt="Отзыв ВК 1" class="review-photo" onclick="openModal(this)">
+                            <img src="img/Reviews/Vk-2.png" alt="Отзыв ВК 2" class="review-photo" onclick="openModal(this)">
                         </div>
                     </div>
                 </div>
@@ -957,9 +1345,9 @@
                     </div>
                     <div class="source-content">
                         <div class="review-gallery">
-                            <img src="img/reviews/2Giz-1.png" alt="Отзыв 2ГИС 1" class="review-photo" onclick="openModal(this)">
-                            <img src="img/reviews/2Giz-2.png" alt="Отзыв 2ГИС 2" class="review-photo" onclick="openModal(this)">
-                            <img src="img/reviews/2Giz-3.png" alt="Отзыв 2ГИС 3" class="review-photo" onclick="openModal(this)">
+                            <img src="img/Reviews/2Giz-1.png" alt="Отзыв 2ГИС 1" class="review-photo" onclick="openModal(this)">
+                            <img src="img/Reviews/2Giz-2.png" alt="Отзыв 2ГИС 2" class="review-photo" onclick="openModal(this)">
+                            <img src="img/Reviews/2Giz-3.png" alt="Отзыв 2ГИС 3" class="review-photo" onclick="openModal(this)">
                         </div>
                     </div>
                 </div>
@@ -980,11 +1368,11 @@
                     </div>
                     <div class="source-content">
                         <div class="review-gallery">
-                            <img src="img/reviews/Pro-Dok-1.png" alt="Отзыв ПроДокторов 1" class="review-photo" onclick="openModal(this)">
-                            <img src="img/reviews/Pro-Dok-2.png" alt="Отзыв ПроДокторов 2" class="review-photo" onclick="openModal(this)">
-                            <img src="img/reviews/Pro-Dok-3.png" alt="Отзыв ПроДокторов 3" class="review-photo" onclick="openModal(this)">
-                            <img src="img/reviews/Pro-Dok-4.png" alt="Отзыв ПроДокторов 4" class="review-photo" onclick="openModal(this)">
-                            <img src="img/reviews/Pro-Dok-5.png" alt="Отзыв ПроДокторов 5" class="review-photo" onclick="openModal(this)">
+                            <img src="img/Reviews/Pro-Dok-1.png" alt="Отзыв ПроДокторов 1" class="review-photo" onclick="openModal(this)">
+                            <img src="img/Reviews/Pro-Dok-2.png" alt="Отзыв ПроДокторов 2" class="review-photo" onclick="openModal(this)">
+                            <img src="img/Reviews/Pro-Dok-3.png" alt="Отзыв ПроДокторов 3" class="review-photo" onclick="openModal(this)">
+                            <img src="img/Reviews/Pro-Dok-4.png" alt="Отзыв ПроДокторов 4" class="review-photo" onclick="openModal(this)">
+                            <img src="img/Reviews/Pro-Dok-5.png" alt="Отзыв ПроДокторов 5" class="review-photo" onclick="openModal(this)">
                         </div>
                     </div>
                 </div>
